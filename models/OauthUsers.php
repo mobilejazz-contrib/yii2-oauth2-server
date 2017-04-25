@@ -34,7 +34,8 @@ class OauthUsers extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username'], 'required'],
+            [['id', 'username'], 'required'],
+            [['id'], 'integer'],
             [['username', 'first_name', 'last_name'], 'string', 'max' => 255],
             [['password'], 'string', 'max' => 2000]
         ];
@@ -46,6 +47,7 @@ class OauthUsers extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'id'    => 'Id',
             'username' => 'Username',
             'first_name' => 'First Name',
             'last_name' => 'Last Name',
