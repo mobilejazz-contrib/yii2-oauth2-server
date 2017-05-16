@@ -58,7 +58,7 @@ class SocialCredentials extends HttpBasic implements GrantTypeInterface
         }
 
         if (!$this->checkSocialCredentials($model)) {
-            $response->setError(401, 'invalid_grant', 'Invalid credentials. Check provider and ');
+            $response->setError(401, 'invalid_grant', 'Invalid credentials. Check provider and token');
             return null;
         }
 
