@@ -11,6 +11,7 @@ use OAuth2\ResponseType\AccessTokenInterface;
 use OAuth2\Storage\ClientCredentialsInterface;
 use yii\base\Exception;
 use yii\base\InvalidConfigException;
+use yii\helpers\ArrayHelper;
 use yii\httpclient\Client;
 
 class SocialCredentials extends HttpBasic implements GrantTypeInterface
@@ -53,7 +54,7 @@ class SocialCredentials extends HttpBasic implements GrantTypeInterface
         ]);
 
         if(!$model->validate()) {
-            $response->setError(422, 'invalid_request', $model->getFirstErrors()[0]);
+            $response->setError(417, 'invalid_request', array_values($model->getFirstErrors())[0]);
             return null;
         }
 
