@@ -49,7 +49,7 @@ class SocialCredentials extends HttpBasic implements GrantTypeInterface
             'client_id' => $request->request('client_id'),
             'client_secret' => $request->request('client_secret'),
             'facebook_token' => $request->request('facebook_token'),
-            'google_id_token' => $request->request('google_id_token')
+            'google_token' => $request->request('google_token')
         ]);
 
         if(!$model->validate()) {
@@ -90,7 +90,7 @@ class SocialCredentials extends HttpBasic implements GrantTypeInterface
                 $data['facebook_token'] = $model->facebook_token;
                 break;
             case 'google':
-                $data['google_id_token'] = $model->google_id_token;
+                $data['google_token'] = $model->google_token;
                 break;
             default:
                 throw new Exception('Unhandled provider: ' . $model->provider);
